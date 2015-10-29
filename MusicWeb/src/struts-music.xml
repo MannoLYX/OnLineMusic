@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+	<package name="music" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+
+		<action name="music_*" class="com.action.MusicAction" method="{1}">
+
+			<result name="queryAllMusicInfo" type="chain">music_queryAllemotionInfo
+			</result>
+			<result name="queryAllemotionInfo" type="chain">music_queryAllStyleInfo
+			</result>
+			<result name="queryAllStyleInfo" type="chain">music_queryAllMusicInfoByNumber
+			</result>
+			<result name="queryAllMusicInfoByNumber">/mainMusicframe.jsp</result>
+
+			<result name="queryMusicBymusicId">/mainMusicPlayer.jsp</result>
+
+			<result name="queryNewMusicByNumber">/mainMusicShow.jsp</result>
+			<result name="queryHostMusicByNumber">/mainMusicShow.jsp</result>
+			<!-- <result name="queryMusicBystyleId" >/mainMusicShow.jsp</result> -->
+			<result name="queryMusicBystyleId">/mainMusicShow.jsp</result>
+			<result name="queryMusicInfo">/mainMusicShow.jsp</result>
+			<result name="queryMusicByemotionId">/mainMusicShow.jsp</result>
+			<result name="fuzzyQueryMusicInfo">/mainMusicShow.jsp</result>
+
+			<result name="queryMusicInfoBymusicId" type="redirect-action">commentary_queryCommentaryByMusicId?musicId=${musicId}
+			</result>
+			<result name="queryMusicInfoBymusicIdByAll" type="redirect-action">commentary_queryCommentaryByMusicIdByAll?musicId=${musicId}
+			</result>
+			<!-- <result name="queryMusicInfoBymusicId">/mainMusicShow.jsp</result> -->
+
+			<result name="queryMusicBysingerId">/mainMusicShow.jsp</result>
+
+
+			<!-- 管理员 -->
+			<result name="deleteMusic" type="redirect-action">page_queryMusicInfoByPage
+			</result>
+
+			<!-- <result name="queryMusicInfoToAdmin">/adminMgrAllInfo.jsp</result> -->
+
+
+			<result name="queryMusicBymusicIdToAdmin">/adminCheckAllInfo.jsp</result>
+
+			<result name="queryMusicBymusicIdToAdminUpdate" type="redirect-action">category_queryAllStyleInfoToUpdate
+			</result>
+
+			<result name="updateMusic" type="redirect-action">page_queryMusicInfoByPage
+			</result>
+
+			<result name="addMusic" type="redirect-action">page_queryMusicInfoByPage
+			</result>
+		</action>
+
+	</package>
+</struts>

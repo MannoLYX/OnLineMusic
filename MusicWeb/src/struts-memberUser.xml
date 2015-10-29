@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+
+	<package name="member" extends="struts-default" namespace="/">
+
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<action name="member_*" class="com.action.MemberAction" method="{1}">
+			<!-- 用户登录 和注册 -->
+			<result name="logIn" type="chain">member_showMenu</result>
+			<result name="nologIn">/login.jsp</result>
+			<result name="showAdminMenu">/iframeMgr.jsp</result>
+			
+			<!-- 转到同一个action中的不同方法 -->
+			<result name="showUserMenu" type="chain">member_queryMemberUserInfoRecently
+			</result>
+
+			<!-- <result name="queryAllMusicInfoByNumber" type="chain">member_queryMemberUserInfoRecently</result> -->
+			<result name="queryMemberUserInfoRecently" type="chain">member_queryMemberUserInfoByIntegral
+			</result>
+			
+			<!--转到不同action的不同方法  -->
+			<result name="queryMemberUserInfoByIntegral" type="redirect-action">page_queryNewMusicByNumberByPage
+			</result>
+
+			<!-- 显示菜单 -->
+			<!-- <result name="showUserMenu" type="chain">member_querySingerInfoByNumber</result> -->
+
+
+			<!-- 加载首页信息 -->
+			<!-- <result name="querySingerInfoByNumber" type="chain">member_queryAllMusicInfoByNumber</result> 
+				<result name="queryAllMusicInfoByNumber" type="chain">member_querySongListInfoByNumber</result> 
+				<result name="querySongListInfoByNumber" type="chain">member_queryMemberUserInfoRecently</result> 
+				<result name="queryMemberUserInfoRecently" type="chain">member_queryMemberUserInfoByIntegral</result> 
+				<result name="queryMemberUserInfoByIntegral" type="chain">member_queryAllStyleInfo</result> 
+				<result name="queryAllStyleInfo" type="chain">member_queryAllemotionInfo</result> 
+				<result name="queryAllemotionInfo" type="chain">member_queryAllSingerInfo</result> 
+				<result name="queryAllSingerInfo">/iframe.jsp</result> -->
+
+			<!-- 增减积分 -->
+			<!-- <result name="addIntegral"></result> <result name="reducedIntegral"></result> -->
+
+			<!-- 用户信息处理 -->
+			<result name="addMemberByUser">/login.jsp</result>
+
+
+			<result name="queryMemberById">updateUser.jsp</result>
+
+			<!--修改头像 <result name="changeUserPicture">/myInfo.jsp</result> -->
+
+
+			<result name="queryMyRoleInfo">/myInfo.jsp</result>
+			<result name="updateMember">/myInfo.jsp</result>
+			<result name="changeuserPwd">/myInfo.jsp</result>
+
+			<!-- 管理员处理用户信息 -->
+			<result name="adminUpdateMemberInfo" type="redirect-action">page_queryMemberUserInfoByPage
+			</result>
+
+			<result name="deleteMember" type="redirect-action">page_queryMemberUserInfoByPage
+			</result>
+			<result name="adminQueryMemberById" type="redirect-action">personRole_queryPerosonRoleInfo
+			</result>
+			
+			<!-- <result name="AdminAddMember">/operateSuccess.jsp</result> -->
+			<result name="AdminAddMember" type="redirect-action">page_queryMemberUserInfoByPage
+			</result>
+			<result name="adminCheckMemberById" type="redirect-action">personRole_queryPersonRoleInfoById?roleId=${user.roleId}
+			</result>
+
+			<result name="showMainPage">/adminCheckAllInfo.jsp</result>
+
+			<result name="queryMemberByAccountName">/adminMgrAllInfo.jsp</result>
+		</action>
+
+
+		<!-- 注销登录 -->
+		<action name="logout" class="com.action.logout">
+			<result name="success">/login.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

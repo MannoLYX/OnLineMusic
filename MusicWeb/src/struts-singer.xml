@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+	<package name="singer" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		<action name="singer_*" class="com.action.SingerAction" method="{1}">
+
+			<result name="queryAllSingerInfo">/uSingerframe.jsp </result>
+
+			<result name="querySingerByGender">/uSingerInfo.jsp</result>
+			<result name="querySingerByPopularity">/uSingerInfo.jsp</result>
+			<result name="querySingerByTimers">/uSingerInfo.jsp</result>
+			<result name="querySingerByCountry">/uSingerInfo.jsp</result>
+
+			<result name="querySingerBySingerId" type="redirect-action">music_queryMusicBysingerId?singerId=${singerId}
+			</result>
+
+			<result name="fuzzyQuerySingerInfo">/uSingerInfo.jsp</result>
+
+			<!-- 管理员 -->
+			<!-- <result name="queryAllSingerInfoToUpdateMusic" type="redirect-action">category_queryAllStyleInfoToUpdate</result> -->
+			<!-- <result name="queryAllSingerInfoToAdmin">/adminMgrAllInfo.jsp</result> -->
+
+
+			<result name="AdminQuerySingerBySingerIdToCheck">/adminCheckAllInfo.jsp</result>
+			<result name="deleteSinger" type="redirect-action">page_querySingerInfoByPage
+			</result>
+
+			<result name="AdminQuerySingerBySingerIdToUpdate">/adminUpdateAllInfo.jsp</result>
+			<result name="updateSinger" type="redirect-action">page_querySingerInfoByPage
+			</result>
+			<result name="AdminQuerySingerToAdd">/adminAddInfo.jsp</result>
+			<result name="addSinger" type="redirect-action">page_querySingerInfoByPage
+			</result>
+		</action>
+
+	</package>
+</struts>

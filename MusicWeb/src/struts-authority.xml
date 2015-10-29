@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+	<package name="authority" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		<action name="authority_*" class="com.action.AuthorityAction"
+			method="{1}">
+
+			<result name="queryUserAllAuthority">/adminCheckAllInfo.jsp</result>
+
+
+			<result name="AdminQueryUserAllAuthorityToUpdate" type="chain">authority_queryUserAuthorityInfo
+			</result>
+			<result name="queryUserAuthorityInfo" type="chain">authority_queryAdminAuthorityInfo
+			</result>
+
+			<result name="queryAdminAuthorityInfo">/adminUpdateAllInfo.jsp</result>
+
+			<result name="queryUserAuthorityInfoToAdd" type="chain">authority_queryAdminAuthorityInfoToAdd
+			</result>
+			<result name="queryAdminAuthorityInfoToAdd">/adminAddInfo.jsp</result>
+		</action>
+
+	</package>
+</struts>

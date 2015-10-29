@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+     
+     
+<struts>
+	
+		<!-- 成员用户的配置信息 -->
+		<include file="struts-memberUser.xml"></include>
+		
+		<!-- 类别信息配置 -->
+		<include file="struts-category.xml"></include>
+		
+		<!-- 歌曲信息配置 -->
+		<include file="struts-music.xml"></include>
+		
+		<!-- 歌手信息配置 -->
+		<include file="struts-singer.xml"></include>
+		
+		<!-- 悦单信息配置 -->
+		<include file="struts-songList.xml"></include>
+		
+		<!-- 评论信息配置 -->
+		<include file="struts-commentary.xml"></include>
+		
+		<!-- 角色信息配置 -->
+		<include file="struts-personRole.xml"></include>
+		
+		<!-- 权限信息配置 -->
+		<include file="struts-authority.xml"></include>
+		
+		<!-- 分页信息配置 -->
+		<include file="struts-page.xml"></include>
+		
+		<!-- 上传信息配置 -->
+		 <include file="struts-fileUpload.xml"></include> 
+		
+		<!-- 下载信息配置 -->
+		<include file="struts-fileDownload.xml"></include>
+	
+</struts>

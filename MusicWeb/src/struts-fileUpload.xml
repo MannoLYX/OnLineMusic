@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<package name="fileUpload" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<action name="fileUpload_*" class="com.action.FileUploadAction"
+			method="{1}">
+
+
+
+			<param name="picSavePath">upload/images/</param>
+			<result name="changeUserPicture">/myInfo.jsp</result>
+
+
+			<param name="singerSavePath">upload/singerPic/</param>
+			<result name="addSingerInfo">/operateSuccess.jsp</result>
+		</action>
+	</package>
+
+	<package name="multiFileUpload" extends="struts-default"
+		namespace="/">
+		<action name="multiFileUpload_*" class="com.action.UploadAction"
+			method="{1}">
+			<param name="savePath">upload/music/</param>
+			<result name="addMusicInfo">/operateSuccess.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+	</package>
+</struts>
+

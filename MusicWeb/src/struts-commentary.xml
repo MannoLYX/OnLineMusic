@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+	<package name="commentary" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		<action name="commentary_*" class="com.action.CommentaryAction"
+			method="{1}">
+
+			<!-- 用户评论处理 -->
+			<!-- commentary_queryCommentaryByMemberUserId?memberId=${memberId} -->
+			<result name="deleteCommentary">/commentaryDelSuccess.jsp</result>
+			<result name="queryCommentaryByMemberUserId">/commentaryInfo.jsp</result>
+			<result name="queryMusicCommentaryByUserId">/commentaryInfo.jsp</result>
+			<result name="querySongListCommentaryByUserId">/commentaryInfo.jsp</result>
+
+			<result name="addCommentary" type="redirect-action">/music_queryMusicInfoBymusicId?musicId=${musicId}
+			</result>
+
+			<result name="queryCommentaryByMusicId">/show.jsp</result>
+			<result name="queryCommentaryByMusicIdByAll">/commentaryMusicInfo.jsp</result>
+			<!-- <result name="queryCommentaryByMusicId" type="redirect-action">music_queryMusicInfoBymusicId?musicId=${musicId}</result> -->
+
+			<result name="fuzzyQueryCommentaryInfo">/commentaryInfo.jsp</result>
+
+
+			<!-- 管理员 -->
+			<!-- queryMusicCommentaryInfoByPage <result name="queryCommentaryInfoByAll">/adminMgrAllInfo.jsp</result> 
+				<result name="queryAllMUsicCommentaryInfo">/adminMgrAllInfo.jsp</result> -->
+			<result name="queryAllSongListCommentaryInfo">/adminMgrAllInfo.jsp</result>
+			<result name="queryCommentaryByCommId">/adminCheckAllInfo.jsp</result>
+			<result name="queryMusicCommentaryByCommId">/adminCheckAllInfo.jsp</result>
+			<result name="querySongListCommentaryByCommId">/adminCheckAllInfo.jsp</result>
+
+			<result name="AdminDeleteCommentary" type="redirect-action">page_queryAllCommentaryInfoByPage
+			</result>
+
+
+		</action>
+
+	</package>
+</struts>

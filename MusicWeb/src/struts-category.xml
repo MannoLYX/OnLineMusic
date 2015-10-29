@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+	<package name="category" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+		<action name="category_*" class="com.action.CategoryAction"
+			method="{1}">
+
+			<result name="queryStyleByStyleId" type="redirect-action">music_queryMusicBystyleId
+			</result>
+
+			<result name="queryemotionByemotionId" type="redirect-action">music_queryMusicByemotionId
+			</result>
+
+
+			<!-- 管理员 -->
+
+			<!-- queryStyleCategoryInfoByPage <result name="queryAllemotionInfo">/adminMgrAllInfo.jsp</result> 
+				<result name="queryAllStyleInfo">/adminMgrAllInfo.jsp</result> -->
+
+
+			<result name="queryAllStyleInfoToUpdate" type="chain">category_queryAllemotionInfoToUpdate
+			</result>
+			<result name="queryAllemotionInfoToUpdate"> /adminUpdateAllInfo.jsp</result>
+
+
+			<result name="queryAllStyleInfoToAdd" type="chain">category_queryAllemotionInfoToAdd
+			</result>
+			<result name="queryAllemotionInfoToAdd"> /adminAddInfo.jsp</result>
+
+
+			<result name="AdminQueryStyleByStyleIdToUpdate">/adminUpdateAllInfo.jsp</result>
+
+			<result name="updateStyle" type="redirect-action">page_queryStyleCategoryInfoByPage
+			</result>
+			<result name="deleteStyle" type="redirect-action">page_queryStyleCategoryInfoByPage
+			</result>
+			<result name="addStyleforword">/adminAddInfo.jsp</result>
+			<result name="addStyle" type="redirect-action">page_queryStyleCategoryInfoByPage
+			</result>
+
+
+			<result name="AdminQueryemotionByemotionId">/adminUpdateAllInfo.jsp </result>
+			<result name="updateEmotion" type="redirect-action">page_queryEmotionCategoryInfoByPage
+			</result>
+			<result name="deleteEmotion" type="redirect-action">page_queryEmotionCategoryInfoByPage
+			</result>
+			<result name="addEmotionforword">/adminAddInfo.jsp</result>
+			<result name="addEmotion" type="redirect-action">page_queryEmotionCategoryInfoByPage
+			</result>
+		</action>
+
+	</package>
+</struts>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+						"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="download" extends="struts-default" namespace="/">
+	
+	<action name="download" class="com.action.FileDownloadAction">
+	
+			 
+			<result type="stream" name="success">		
+				<param name="contentDisposition">attachment;fileName="${fileName}"</param>
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>
+				<param name="inputName">InputStream</param>
+				<param name="bufferSize">10485760</param>
+			</result>
+		
+		
+	</action>
+	</package>
+</struts>

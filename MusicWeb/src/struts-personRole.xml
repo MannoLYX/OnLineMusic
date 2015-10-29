@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+
+
+	<package name="personRole" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<action name="personRole_*" class="com.action.PersonRoleAction"
+			method="{1}">
+
+			<result name="queryPerosonRoleInfo">/adminUpdateAllInfo.jsp</result>
+
+			<!-- 管理员 -->
+			<result name="AdminQueryPerosonRoleInfo">/adminAddInfo.jsp</result>
+			<result name="queryPersonRoleInfoById">/adminCheckAllInfo.jsp</result>
+
+			<result name="AdminQueryPerosonRole">/adminMgrAllInfo.jsp</result>
+
+
+			<result name="AdminQueryPersonRoleInfoById" type="redirect-action">authority_queryUserAllAuthority?authority_RoleId=${pRole.authority_RoleId}
+			</result>
+			<result name="AdminQueryPersonRoleInfoByIdToUpdate" type="redirect-action">authority_AdminQueryUserAllAuthorityToUpdate?authority_RoleId=${pRole.authority_RoleId}
+			</result>
+
+			<result name="updatePersonRole" type="chain">personRole_AdminQueryPerosonRole
+			</result>
+
+			<result name="addPersonRole" type="chain">personRole_AdminQueryPerosonRole
+			</result>
+			<result name="deletePersonRole" type="chain">personRole_AdminQueryPerosonRole
+			</result>
+		</action>
+
+	</package>
+</struts>

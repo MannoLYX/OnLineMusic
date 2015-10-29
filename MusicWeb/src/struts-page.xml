@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+     
+     
+<struts>
+
+	<package name="page" extends="struts-default" namespace="/">
+		<action name="page_*" class="com.action.PageAction" method="{1}">
+		
+		<!-- 管理员 -->
+		<result name="queryMemberUserInfoByPage">/adminMgrAllInfo.jsp</result>
+		<result name="queryMusicInfoByPage">/adminMgrAllInfo.jsp</result>
+		
+		<result name="querySingerInfoByPage">/adminMgrAllInfo.jsp</result>
+		
+		<result name="queryStyleCategoryInfoByPage">/adminMgrAllInfo.jsp</result>
+		<result name="queryEmotionCategoryInfoByPage">/adminMgrAllInfo.jsp</result>
+		
+		<result name="queryMusicCommentaryInfoByPage">/adminMgrAllInfo.jsp</result>
+		<result name="queryAllCommentaryInfoByPage">/adminMgrAllInfo.jsp</result>
+	
+		<result name="queryNewMusicByNumberByPage" >/index.jsp</result>
+	
+		 </action>
+
+	</package>
+</struts>
